@@ -28,18 +28,30 @@ Memisahkan komponen UI menjadi kustom widget di dalam file `profile_page.dart` m
 
 **Widget yang dibuat (dalam `profile_page.dart`):**
 - `ProfileAvatar` : Widget kustom untuk foto/ikon profil.
-- `ProfileInfo` : Widget kustom untuk menampilkan nama dan peran pengguna.
+- `ProfileInfo` : Widget kustom untuk menampilkan nama, peran, dan tombol "Edit Profil".
 
 **Format Commit:**
 `refactor: extract avatar and info into custom widgets`
 
 ---
 
-### Hari 2 - Sesi Pagi: Menambahkan Widget Statistik (Profile Stats)
-Menambahkan bagian statistik ringkasan pengguna (jumlah Proyek, Pengikut, dan Mengikuti) untuk memperlengkap UI profil.
+### Hari 2 - Sesi Pagi: Menambahkan Baris Statistik
+Menambahkan bagian statistik ringkasan pengguna (jumlah Proyek, Followers, dan Following) di bawah tombol Edit Profil menggunakan layout `Row` dan `Column`.
 
-**Widget yang ditambahkan (dalam `profile_page.dart`):**
-- `ProfileStats` & `_StatItem` : Widget kustom untuk menampilkan baris indikator statistik.
+**Komponen yang ditambahkan:**
+- Widget `Row` yang berisi 3 kolom indikator angka dan label statistik.
 
 **Format Commit:**
-`feat: add profile stats widget`
+`feat: add profile statistics row`
+
+---
+
+### Hari 2 - Sesi Siang/Malam: Refactoring - Extract Widget (Bagian 2)
+Mengekstrak komponen baris statistik menjadi *Custom Widget* mandiri agar kode modular dan *reusable*.
+
+**Widget yang dibuat (dalam `profile_page.dart`):**
+- `ProfileStats` : Widget kustom pembungkus baris statistik.
+- `StatItem` : Widget kustom *reusable* untuk merender setiap pasang angka dan label.
+
+**Format Commit:**
+`refactor: extract statistics UI into ProfileStats and StatItem widgets`

@@ -12,10 +12,10 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          children: [
+          children: const [
             ProfileAvatar(),
             SizedBox(height: 16),
             ProfileInfo(
@@ -75,13 +75,25 @@ class ProfileInfo extends StatelessWidget {
           style: TextStyle(fontSize: 16, color: Colors.grey[700]),
           textAlign: TextAlign.center,
         ),
+        const SizedBox(height: 16),
+        ElevatedButton.icon(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Fitur edit belum aktif pada modul statis.'),
+              ),
+            );
+          },
+          icon: const Icon(Icons.edit, size: 18),
+          label: const Text('Edit Profil'),
+        ),
       ],
     );
   }
 }
 
 
-// WIDGET: PROFILE STATS
+// WIDGET: PROFILE STATS (EXTRACT WIDGET)
 
 class ProfileStats extends StatelessWidget {
   const ProfileStats({super.key});
@@ -89,35 +101,42 @@ class ProfileStats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.blueAccent.withOpacity(0.08),
+        color: Colors.blue[50],
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: const [
-          _StatItem(label: 'Proyek', value: '12'),
-          _StatItem(label: 'Pengikut', value: '120'),
-          _StatItem(label: 'Mengikuti', value: '85'),
+          StatItem(count: '15', label: 'Proyek'),
+          StatItem(count: '1.2K', label: 'Followers'),
+          StatItem(count: '42', label: 'Following'),
         ],
       ),
     );
   }
 }
 
-class _StatItem extends StatelessWidget {
-  final String label;
-  final String value;
 
-  const _StatItem({required this.label, required this.value});
+// WIDGET: STAT ITEM (REUSABLE WIDGET)
+
+class StatItem extends StatelessWidget {
+  final String count;
+  final String label;
+
+  const StatItem({
+    super.key,
+    required this.count,
+    required this.label,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          value,
+          count,
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -127,7 +146,10 @@ class _StatItem extends StatelessWidget {
         const SizedBox(height: 4),
         Text(
           label,
-          style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.grey[600],
+          ),
         ),
       ],
     );
