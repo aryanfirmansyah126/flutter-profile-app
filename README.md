@@ -32,3 +32,14 @@ Memisahkan komponen UI menjadi kustom widget di dalam file `profile_page.dart` m
 
 **Format Commit:**
 `refactor: extract avatar and info into custom widgets`
+
+---
+
+### Hari 2 - Sesi Pagi: Menambahkan Widget Statistik (Profile Stats)
+Menambahkan bagian statistik ringkasan pengguna (jumlah Proyek, Pengikut, dan Mengikuti) untuk memperlengkap UI profil.
+
+**Widget yang ditambahkan (dalam `profile_page.dart`):**
+- `ProfileStats` & `_StatItem` : Widget kustom untuk menampilkan baris indikator statistik.
+
+**Format Commit:**
+`feat: add profile stats widget`

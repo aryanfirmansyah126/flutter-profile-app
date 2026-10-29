@@ -12,7 +12,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
-      body: const Padding(
+      body: const SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -22,6 +22,8 @@ class ProfilePage extends StatelessWidget {
               name: 'Aryan Firmansyah',
               role: 'Mahasiswa Software Engineering',
             ),
+            SizedBox(height: 24),
+            ProfileStats(),
           ],
         ),
       ),
@@ -72,6 +74,60 @@ class ProfileInfo extends StatelessWidget {
           role,
           style: TextStyle(fontSize: 16, color: Colors.grey[700]),
           textAlign: TextAlign.center,
+        ),
+      ],
+    );
+  }
+}
+
+
+// WIDGET: PROFILE STATS
+
+class ProfileStats extends StatelessWidget {
+  const ProfileStats({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      decoration: BoxDecoration(
+        color: Colors.blueAccent.withOpacity(0.08),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: const [
+          _StatItem(label: 'Proyek', value: '12'),
+          _StatItem(label: 'Pengikut', value: '120'),
+          _StatItem(label: 'Mengikuti', value: '85'),
+        ],
+      ),
+    );
+  }
+}
+
+class _StatItem extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _StatItem({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          value,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.blueAccent,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          label,
+          style: TextStyle(fontSize: 14, color: Colors.grey[600]),
         ),
       ],
     );
