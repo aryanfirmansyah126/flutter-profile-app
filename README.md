@@ -23,7 +23,7 @@ Pada sesi ini, fokus utamanya adalah membuat struktur awal aplikasi dan tampilan
 
 ---
 
-### Hari 1 - Sesi Siang/Malam: Refactoring - Extract Widget (Bagian 1)
+### Hari 1 - Sesi Siang/Malam: Refactoring - Extract Widget 
 Memisahkan komponen UI menjadi kustom widget di dalam file `profile_page.dart` menggunakan penanda komentar agar kode rapi dan gampang dikelola.
 
 **Widget yang dibuat (dalam `profile_page.dart`):**
@@ -46,7 +46,7 @@ Menambahkan bagian statistik ringkasan pengguna (jumlah Proyek, Followers, dan F
 
 ---
 
-### Hari 2 - Sesi Siang/Malam: Refactoring - Extract Widget (Bagian 2)
+### Hari 2 - Sesi Siang/Malam: Refactoring - Extract Widget
 Mengekstrak komponen baris statistik menjadi *Custom Widget* mandiri agar kode modular dan *reusable*.
 
 **Widget yang dibuat (dalam `profile_page.dart`):**
@@ -55,3 +55,14 @@ Mengekstrak komponen baris statistik menjadi *Custom Widget* mandiri agar kode m
 
 **Format Commit:**
 `refactor: extract statistics UI into ProfileStats and StatItem widgets`
+
+---
+
+### Hari 3 - Sesi Pagi: Implementasi ListView & Expanded
+Menambahkan daftar Keahlian Terpendam yang dapat digulir (*scrollable*) di bagian bawah halaman profil menggunakan `ListView.builder` yang dibungkus oleh widget `Expanded`.
+
+**Komponen yang ditambahkan:**
+- `Expanded` & `ListView.builder` : Menampilkan daftar keahlian secara dinamis dalam bentuk `Card` dan `ListTile`.
+
+**Format Commit:**
+`feat: add scrollable experience list using ListView.builder`

@@ -3,6 +3,15 @@ import 'package:flutter/material.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
+  final List<String> hiddenSkills = const [
+    'Menguasai 7 Elements',
+    'Bisa jalan di atas air dan api',
+    'Mampu mengendalikan hujan badai',
+    'Mahir ber bahasa hewan',
+    'Pernah memadamkan hutan karhutla pada 2015',
+    'Berpengalaman Memperbudak AI ',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,18 +21,42 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          children: const [
-            ProfileAvatar(),
-            SizedBox(height: 16),
-            ProfileInfo(
+          children: [
+            const ProfileAvatar(),
+            const SizedBox(height: 16),
+            const ProfileInfo(
               name: 'Aryan Firmansyah',
               role: 'Mahasiswa Software Engineering',
             ),
-            SizedBox(height: 24),
-            ProfileStats(),
+            const SizedBox(height: 24),
+            const ProfileStats(),
+            const SizedBox(height: 24),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Keahlian Terpendam',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const Divider(),
+            Expanded(
+              child: ListView.builder(
+                itemCount: hiddenSkills.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    elevation: 2,
+                    margin: const EdgeInsets.symmetric(vertical: 6),
+                    child: ListTile(
+                      leading: const Icon(Icons.auto_awesome, color: Colors.blueAccent),
+                      title: Text(hiddenSkills[index]),
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
@@ -31,9 +64,9 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-
+// =============================================================================
 // WIDGET: PROFILE AVATAR
-
+// =============================================================================
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({super.key});
 
@@ -47,9 +80,9 @@ class ProfileAvatar extends StatelessWidget {
   }
 }
 
-
+// =============================================================================
 // WIDGET: PROFILE INFO
-
+// =============================================================================
 class ProfileInfo extends StatelessWidget {
   final String name;
   final String role;
@@ -92,9 +125,9 @@ class ProfileInfo extends StatelessWidget {
   }
 }
 
-
+// =============================================================================
 // WIDGET: PROFILE STATS (EXTRACT WIDGET)
-
+// =============================================================================
 class ProfileStats extends StatelessWidget {
   const ProfileStats({super.key});
 
@@ -118,9 +151,9 @@ class ProfileStats extends StatelessWidget {
   }
 }
 
-
+// =============================================================================
 // WIDGET: STAT ITEM (REUSABLE WIDGET)
-
+// =============================================================================
 class StatItem extends StatelessWidget {
   final String count;
   final String label;
