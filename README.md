@@ -46,7 +46,7 @@ Menambahkan bagian statistik ringkasan pengguna (jumlah Proyek, Followers, dan F
 
 ---
 
-### Hari 2 - Sesi Siang/Malam: Refactoring - Extract Widget
+### Hari 2 - Sesi Siang/Malam: Refactoring - Extract Widget 
 Mengekstrak komponen baris statistik menjadi *Custom Widget* mandiri agar kode modular dan *reusable*.
 
 **Widget yang dibuat (dalam `profile_page.dart`):**
@@ -66,3 +66,14 @@ Menambahkan daftar Keahlian Terpendam yang dapat digulir (*scrollable*) di bagia
 
 **Format Commit:**
 `feat: add scrollable experience list using ListView.builder`
+
+---
+
+### Hari 3 - Sesi Siang/Malam: Refactoring - Extract Widget
+Mengekstrak tampilan item dalam `ListView` ke dalam *Custom Widget* mandiri bernama `ExperienceCard` serta menerapkan styling pada kartu.
+
+**Widget yang dibuat (dalam `profile_page.dart`):**
+- `ExperienceCard` : Widget kustom *reusable* untuk menampilkan setiap baris pengalaman/keahlian.
+
+**Format Commit:**
+`refactor: extract list tile into ExperienceCard widget and apply styling`

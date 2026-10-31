@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
-  final List<String> hiddenSkills = const [
+  final List<String> experiences = const [
     'Menguasai 7 Elements',
     'Bisa jalan di atas air dan api',
     'Mampu mengendalikan hujan badai',
@@ -44,15 +44,10 @@ class ProfilePage extends StatelessWidget {
             const Divider(),
             Expanded(
               child: ListView.builder(
-                itemCount: hiddenSkills.length,
+                itemCount: experiences.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                    elevation: 2,
-                    margin: const EdgeInsets.symmetric(vertical: 6),
-                    child: ListTile(
-                      leading: const Icon(Icons.auto_awesome, color: Colors.blueAccent),
-                      title: Text(hiddenSkills[index]),
-                    ),
+                  return ExperienceCard(
+                    title: experiences[index],
                   );
                 },
               ),
@@ -64,9 +59,9 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-// =============================================================================
+
 // WIDGET: PROFILE AVATAR
-// =============================================================================
+
 class ProfileAvatar extends StatelessWidget {
   const ProfileAvatar({super.key});
 
@@ -80,9 +75,9 @@ class ProfileAvatar extends StatelessWidget {
   }
 }
 
-// =============================================================================
+
 // WIDGET: PROFILE INFO
-// =============================================================================
+
 class ProfileInfo extends StatelessWidget {
   final String name;
   final String role;
@@ -125,9 +120,9 @@ class ProfileInfo extends StatelessWidget {
   }
 }
 
-// =============================================================================
+
 // WIDGET: PROFILE STATS (EXTRACT WIDGET)
-// =============================================================================
+
 class ProfileStats extends StatelessWidget {
   const ProfileStats({super.key});
 
@@ -151,9 +146,9 @@ class ProfileStats extends StatelessWidget {
   }
 }
 
-// =============================================================================
+
 // WIDGET: STAT ITEM (REUSABLE WIDGET)
-// =============================================================================
+
 class StatItem extends StatelessWidget {
   final String count;
   final String label;
@@ -185,6 +180,35 @@ class StatItem extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+
+// WIDGET: EXPERIENCE CARD (EXTRACT WIDGET)
+
+class ExperienceCard extends StatelessWidget {
+  final String title;
+
+  const ExperienceCard({
+    super.key,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 2,
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      child: ListTile(
+        leading: const Icon(Icons.auto_awesome, color: Colors.blueAccent),
+        title: Text(
+          title,
+          style: const TextStyle(
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
     );
   }
 }
