@@ -88,3 +88,14 @@ Mengubah `ProfilePage` yang semula `StatelessWidget` menjadi `StatefulWidget` se
 
 **Format Commit:**
 `refactor: convert ProfilePage to Stateful Widget for dynamic data`
+
+
+### Hari 4 - Sesi Siang/Malam: Implementasi Form Dialog Edit & State Update
+Menambahkan interaktivitas pada tombol "Edit Profil" untuk memunculkan `showDialog` berisi `TextFormField`. Saat disimpan, perintah `setState()` memperbarui nama dan role di layar secara *real-time*.
+
+**Komponen yang ditambahkan:**
+- `showDialog` & `AlertDialog` : Dialog pop-up edit profil.
+- `setState()` : Memperbarui state `userName` dan `role` secara langsung.
+
+**Format Commit:**
+`feat: implement edit profile dialog with state update`

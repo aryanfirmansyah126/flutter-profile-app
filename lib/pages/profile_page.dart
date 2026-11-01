@@ -8,7 +8,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  // Variabel state untuk menampung data dinamis profil
+  // Data state profil
   String userName = 'Aryan Firmansyah';
   String role = 'Mahasiswa Software Engineering';
 
@@ -20,6 +20,57 @@ class _ProfilePageState extends State<ProfilePage> {
     'Pernah memadamkan hutan karhutla pada 2015',
     'Berpengalaman Memperbudak AI ',
   ];
+
+  // Fungsi untuk menampilkan Form Dialog Edit Profil
+  void _showEditDialog() {
+    final nameController = TextEditingController(text: userName);
+    final roleController = TextEditingController(text: role);
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Edit Profil'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextFormField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelText: 'Nama Lengkap',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 12),
+              TextFormField(
+                controller: roleController,
+                decoration: const InputDecoration(
+                  labelText: 'Role / Jabatan',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Batal'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  userName = nameController.text;
+                  role = roleController.text;
+                });
+                Navigator.pop(context);
+              },
+              child: const Text('Simpan'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +90,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ProfileInfo(
               name: userName,
               role: role,
+              onEditPressed: _showEditDialog,
             ),
             const SizedBox(height: 24),
             const ProfileStats(),
@@ -90,11 +142,13 @@ class ProfileAvatar extends StatelessWidget {
 class ProfileInfo extends StatelessWidget {
   final String name;
   final String role;
+  final VoidCallback onEditPressed;
 
   const ProfileInfo({
     super.key,
     required this.name,
     required this.role,
+    required this.onEditPressed,
   });
 
   @override
@@ -114,13 +168,7 @@ class ProfileInfo extends StatelessWidget {
         ),
         const SizedBox(height: 16),
         ElevatedButton.icon(
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Fitur edit belum aktif pada modul statis.'),
-              ),
-            );
-          },
+          onPressed: onEditPressed,
           icon: const Icon(Icons.edit, size: 18),
           label: const Text('Edit Profil'),
         ),
