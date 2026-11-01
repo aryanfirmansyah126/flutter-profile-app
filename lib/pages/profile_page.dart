@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  // Variabel state untuk menampung data dinamis profil
+  String userName = 'Aryan Firmansyah';
+  String role = 'Mahasiswa Software Engineering';
 
   final List<String> experiences = const [
     'Menguasai 7 Elements',
@@ -27,9 +36,9 @@ class ProfilePage extends StatelessWidget {
           children: [
             const ProfileAvatar(),
             const SizedBox(height: 16),
-            const ProfileInfo(
-              name: 'Aryan Firmansyah',
-              role: 'Mahasiswa Software Engineering',
+            ProfileInfo(
+              name: userName,
+              role: role,
             ),
             const SizedBox(height: 24),
             const ProfileStats(),

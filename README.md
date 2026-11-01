@@ -69,7 +69,7 @@ Menambahkan daftar Keahlian Terpendam yang dapat digulir (*scrollable*) di bagia
 
 ---
 
-### Hari 3 - Sesi Siang/Malam: Refactoring - Extract Widget
+### Hari 3 - Sesi Siang/Malam: Refactoring - Extract Widget 
 Mengekstrak tampilan item dalam `ListView` ke dalam *Custom Widget* mandiri bernama `ExperienceCard` serta menerapkan styling pada kartu.
 
 **Widget yang dibuat (dalam `profile_page.dart`):**
@@ -77,3 +77,14 @@ Mengekstrak tampilan item dalam `ListView` ke dalam *Custom Widget* mandiri bern
 
 **Format Commit:**
 `refactor: extract list tile into ExperienceCard widget and apply styling`
+
+---
+
+### Hari 4 - Sesi Pagi: Konversi ke StatefulWidget
+Mengubah `ProfilePage` yang semula `StatelessWidget` menjadi `StatefulWidget` serta mendeklarasikan variabel `userName` dan `role` di dalam *State class* agar data profil menjadi dinamis.
+
+**Komponen yang diperbarui:**
+- `ProfilePage` & `_ProfilePageState` : Menampung state lokal untuk data nama dan peran pengguna.
+
+**Format Commit:**
+`refactor: convert ProfilePage to Stateful Widget for dynamic data`
